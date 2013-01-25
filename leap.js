@@ -41,4 +41,20 @@ function initWS() {
 
 $(document).ready(function () {
   initWS();
+  
+  $('#play').click(function(){
+  	$('#player, #bot').removeClass();
+  	var counter=3;
+	$('#counter').html(counter);
+  	var interval = setInterval(function() {
+    	counter--;
+    	$('#counter').html(counter);
+    	if (counter === 0) {
+    		clearInterval(interval);
+    		console.log('show!!');
+    		RPS.active = true;
+    	}
+	}, 1000);
+  });
+
 });
