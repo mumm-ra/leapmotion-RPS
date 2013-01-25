@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Leap RPS</title>
+<link rel="stylesheet" type="text/css" href="assets/style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="rps.js"></script>
+<script src="leap.js"></script>
+</head>
+<body>
+<h1>LeapMotion: Rock Paper Scissors</h1>
+<div id="connection">WebSocket not connected</div>
+<div id="RPS">
+  <p>Hands: <span id="hands"></span></p>
+  <p>Fingers: <span id="fingers"></span></p>
+  <p>Result: </p><div id="result"></div>
+</div>
+<div id="main" style="visibility:hidden">
+  <div id="output"></div>
+</div>
+
+</body>
+</html>

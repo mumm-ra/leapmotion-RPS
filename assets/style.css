@@ -1,0 +1,17 @@
+.rock {
+	background-image:url('img/rock.png');
+	background-repeat: no-repeat;
+}
+.paper {
+	background-image:url('img/paper.png');
+	background-repeat: no-repeat;
+}
+.scissors {
+	background-image:url('img/scissors.png');
+	background-repeat: no-repeat;
+}
+
+#result {
+	width:123px;
+	height:179px;
+}
