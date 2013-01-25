@@ -8,6 +8,7 @@ RPS = {
 	},
 	active: false,
 	last_result: null,
+  sneaky_mode: false,
 	display: function(leapmotion_frame) {
 		if (!RPS.active) return;
 		var result = null;
@@ -36,13 +37,17 @@ RPS = {
 					if (RPS.last_result !== null){
 						console.log('result', RPS.last_result);
 						RPS.active = false;
-						bot_result = RPS.bot_result();
-						winner = RPS.winner(RPS.last_result, bot_result);
-						$('#winner').html(winner);
-						//display bot result
-						$('#bot').addClass(bot_result);
-						$('#player').addClass(RPS.last_result);
-						RPS.last_result = null;
+            if(!RPS.sneaky_mode){
+						  bot_result = RPS.bot_result();
+            } else {
+              bot_result = RPS.make_bot_beat_player(RPS.last_result);
+              RPS.sneaky_mode = false;
+            };
+            winner = RPS.winner(RPS.last_result, bot_result);
+            $('#winner').html(winner);  
+            $('#bot').addClass(bot_result);
+            $('#player').addClass(RPS.last_result);
+            RPS.last_result = null;
 					}
 				}, 500);
 			}
@@ -74,8 +79,12 @@ RPS = {
 			 return 'player';
 		
 		return 'bot';
-
-	}
+	},
+  make_bot_beat_player: function(player_result) {
+    if(player_result == RPS._.results.rock) return RPS._.results.paper;
+    if(player_result == RPS._.results.scissors) return RPS._.results.rock;
+    if(player_result == RPS._.results.paper) return RPS._.results.scissors;
+  }
 }
 
 
